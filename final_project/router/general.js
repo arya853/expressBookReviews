@@ -35,10 +35,14 @@ public_users.get('/author/:author', function (req, res) {
   return res.status(200).json(result);
 });
 
-// Get all books based on title
-public_users.get('/title/:title',function (req, res) {
-  //Write your code here
-  return res.status(300).json({message: "Yet to be implemented"});
+public_users.get('/title/:title', function (req, res) {
+  const title = req.params.title;
+
+  const result = Object.values(books).filter(
+    book => book.title.toLowerCase() === title.toLowerCase()
+  );
+
+  return res.status(200).json(result);
 });
 
 //  Get book review
